@@ -14,21 +14,24 @@ const server = new McpServer({
   },
 });
 
-server.tool(
+server.registerTool(
   "create-user",
-  "Create a new user in the database",
   {
-    name: z.string(),
-    email: z.string(),
-    address: z.string(),
-    phone: z.string(),
-  },
-  {
-    title: "Create User",
-    readOnlyHint: true,
-    destructiveHint: false,
-    idempotentHint: false,
-    openWorldHint: true,
+    title: "Second create user",
+    description: "Create a new user in the database",
+    inputSchema: {
+      name: z.string(),
+      email: z.string(),
+      address: z.string(),
+      phone: z.string(),
+    },
+    annotations: {
+      title: "Create User",
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: true,
+    },
   },
   async (params) => {
     try {
