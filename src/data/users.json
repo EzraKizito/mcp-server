@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Ezra",
+    "email": "random@hotmail.com",
+    "address": "4 Hatter St",
+    "phone": "11111"
+  },
+  {
+    "id": 2,
+    "name": "Jacob",
+    "email": "random2@hotmail.com",
+    "address": "45 Hatter St",
+    "phone": "212121"
+  },
+  {
+    "id": 3,
+    "name": "Mark",
+    "email": "random3@hotmail.com",
+    "address": "89 Hatter St",
+    "phone": "838242"
+  },
+  {
+    "id": 4,
+    "name": "Kyles",
+    "email": "gsgssss",
+    "address": "gsagag",
+    "phone": "32434"
+  }
+]

@@ -7,7 +7,7 @@
     "server:build": "tsc",
     "server:build:watch:": "tsc --watch",
     "server:dev": "tsx src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server:inspect": " set DANGEROUSLY_OMIT_AUTH=true && npx @modelcontextprotocol/inspector npm run server:dev"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,13 @@
   },
   "homepage": "https://github.com/EzraKizito/mcp-server#readme",
   "devDependencies": {
+    "@modelcontextprotocol/inspector": "^0.16.8",
+    "effect": "^3.17.14",
     "typescript": "^5.9.2"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.18.1",
-    "@types/node": "^24.5.2"
+    "@types/node": "^24.5.2",
+    "zod": "^3.25.76"
   }
 }
