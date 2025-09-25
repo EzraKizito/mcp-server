@@ -2,10 +2,11 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import fs from "node:fs/promises";
+import path from "node:path";
 
 // Create a server
 const server = new McpServer({
-  name: "test",
+  name: "first-mcp-server",
   version: "1.0.0",
   capabilities: {
     resources: {},
@@ -47,21 +48,50 @@ server.registerTool(
   }
 );
 
+server.resource(
+  "users",
+  "users://all",
+  {
+    description: "Get all users",
+    title: "Users",
+    mimeType: "application/json",
+  },
+  async (uri) => {
+    const dataPath = path.resolve(process.cwd(), "src", "data", "users.json");
+    // // Read and parse existing users
+    const raw = await fs.readFile(dataPath, "utf-8");
+    const users: Array<any> = JSON.parse(raw || "[]");
+
+    return {
+      contents: [
+        {
+          uri: uri.href,
+          text: JSON.stringify(users),
+          mimeType: "application/json",
+        },
+      ],
+    };
+  }
+);
+
 async function createUser(user: {
   name: string;
   email: string;
   address: string;
   phone: string;
 }) {
-  const users = await import("src/data/users.json", {
-    with: { type: "json" },
-  }).then((m) => m.default);
+  // Resolve path relative to the repository root so this works whether running
+  // compiled JS or tsx/ts-node from the project root.
+  const dataPath = path.resolve(process.cwd(), "src", "data", "users.json");
+
+  // // Read and parse existing users
+  const raw = await fs.readFile(dataPath, "utf-8");
+  const users: Array<any> = JSON.parse(raw || "[]");
 
   const id = users.length + 1;
-
   users.push({ id, ...user });
 
-  await fs.writeFile("src/data/users.json", JSON.stringify(users, null, 2));
+  await fs.writeFile(dataPath, JSON.stringify(users, null, 2), "utf-8");
 
   return id;
 }

@@ -33,5 +33,26 @@
     "email": "slgaklsd",
     "address": "sdfa;alskdf",
     "phone": "21143432"
+  },
+  {
+    "id": 6,
+    "name": "Test User",
+    "email": "test.user@example.com",
+    "address": "123 Example St, Sample City, USA",
+    "phone": "+1-555-0100"
+  },
+  {
+    "id": 7,
+    "name": "Test User 2",
+    "email": "test.user2@example.com",
+    "address": "456 Example Ave, Sample City, USA",
+    "phone": "+1-555-0101"
+  },
+  {
+    "id": 8,
+    "name": "JH",
+    "email": "jh@gmail.com",
+    "address": "4892 Hatcheer St",
+    "phone": "8392400210"
   }
 ]
